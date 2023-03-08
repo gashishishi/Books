@@ -1,0 +1,76 @@
+@charset 'utf-8';
+
+/* リスト表示の設定 */
+td, tr, th {
+    border: 1px solid #000000;
+    /* padding: 0.25rem; */
+}
+
+tr:nth-child(2n) {
+    background-color: #f8f9fa;
+}
+
+#my-rental table:not(:last-child){
+    margin-bottom: 1.5rem;
+}
+
+/* 検索バー */
+input[type=radio]{
+    display: none;
+}
+
+/* カーソル変更 */
+.search-button, .rental-icon, .return-icon{
+    cursor : pointer;
+}
+
+.search-target-btn{
+    border: 3px solid #ced4da
+}
+
+.search-type-btn {
+    border: 1px solid #ced4da;
+}
+
+.search-target-btn.show{
+    color: #0dcaf0 !important;
+    border-color:#0dcaf0;
+    box-shadow: 0 0 0 0.25rem rgb(13, 202, 240, 0.5);
+}
+
+#search-target-dropdown label,
+#search-type-dropdown label
+{
+    border: 3px solid rgba(206, 212, 218, 0);
+}
+
+#search-target-dropdown label:hover {
+    border: 3px solid rgba(206, 212, 218, 1);
+}
+
+#search-type-dropdown li:first-child label:hover {
+    border: 3px solid rgb(25,135,84);
+}
+#search-type-dropdown li:last-child label:hover {
+    border: 3px solid rgb(255,193,7);
+}
+
+/* 「検索する」ボタン */
+#search-button{
+    border: 3px solid rgba(206, 212, 218, 0);
+}
+
+#search-button:not(:disabled){
+    color: #0dcaf0 !important;
+    border: 3px solid #0dcaf0 !important;
+}
+
+#search-button:hover{
+    background-color: #ffffff !important;
+}
+
+
+/* 「レンタルする」などのアイコン。フェードインのための設定 */
+.rental-icon{
+    display: none;
+}
