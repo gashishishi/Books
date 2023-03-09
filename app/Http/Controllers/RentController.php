@@ -99,7 +99,7 @@ class RentController extends Controller
     }
 
     public function return(Request $request){
-            $id = $request->id;
+        $id = $request->id;
         try {
             // 指定のidのrentalsレコードを取得
             $rental = Rental::find($id);
@@ -127,7 +127,31 @@ class RentController extends Controller
         }
     }
     
-    public static function returnOver(){
-        
+    public static function returnOver(array $id){
+        try {
+            // 指定のidのrentalsレコードを取得
+            $rental = Rental::orWhere($id);
+            $userId = $rental->user_id;
+            $bookId = $rental->book_id;
+
+            $user = User::find($userId);
+            $book = Book::find($bookId);
+            
+            // レンタル数を減らし、在庫数を増やす。
+            $user->number_of_rentals--;
+            $user->save();
+            $book->stock++;
+            $book->save();
+
+            // returnedフィールドに返却日時を追加する
+            $now = new RentalTime();
+            $rental->returned = $now->getTime();
+            $rental->save();
+            return redirect('/mypage');
+
+
+        } catch (PDOException $e){
+            return view('mypage.index');
+        }
     }
 }

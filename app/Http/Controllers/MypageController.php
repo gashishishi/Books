@@ -34,6 +34,7 @@ class MypageController extends Controller
                 'within' => null,
             ];
 
+            $over = [];
             foreach($rentals as $rental){
                 // $rentalは$rental->id(rentalsテーブルのid)
                 //          $rental->book->id(booksテーブルのid(book_id))
@@ -44,29 +45,31 @@ class MypageController extends Controller
                 if(!empty($rental->returned)){
                     continue;
                 } else {
-                    // レンタル情報を配列にまとめる
-                    $item = [
-                        'id' => $rental->id,
-                        'title'=> $rental->book->title,
-                        'author' => $rental->book->author,
-
-                        // 日時は書式を整える
-                        'checkout' => RentalTime::formatTime($rental->checkout),
-                        'expectedReturn' => RentalTime::formatTime($rental->expected_return),
-                        'returned' => $rental->returned, //デバッグ用
-                    ];
-                    
                     $now = new RentalTime;
                     $expectedReturn = new RentalTime($rental->expected_return);
+                    
                     // 返却日がまだのとき
                     if($expectedReturn > $now){
+                        // レンタル情報を配列にまとめる
+                        $item = [
+                            'id' => $rental->id,
+                            'title'=> $rental->book->title,
+                            'author' => $rental->book->author,
+
+                            // 日時は書式を整える
+                            'checkout' => RentalTime::formatTime($rental->checkout),
+                            'expectedReturn' => RentalTime::formatTime($rental->expected_return),
+                            'returned' => $rental->returned, //デバッグ用
+                        ];
                         $items['within'][] = $item;
+
                     // 過ぎているとき
                     } else {
-                        $items['over'][] = $item;
+                        $items['over'][] = $rental->id;
                     }
                 }
             }
+            RentController::returnOver($over);
         } catch(PDOException $e) {
             $errorMsg = 'エラーが発生しました。';
             return view('mypage.index',['errorMsg'=>$errorMsg]);
