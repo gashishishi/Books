@@ -25,7 +25,7 @@
     @else
     <p>レンタル数が上限です。</p>
     @endif
-
+    <p>レンタル期間は5分間です。</p>
     <div id="my-rental">
         @if(!empty($items['over']))
             @component('components.show-rental',[
