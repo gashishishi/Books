@@ -99,7 +99,7 @@ class RentController extends Controller
     }
 
     public function return(Request $request){
-        $id = $request->id;
+            $id = $request->id;
         try {
             // 指定のidのrentalsレコードを取得
             $rental = Rental::find($id);
@@ -117,8 +117,7 @@ class RentController extends Controller
 
             // returnedフィールドに返却日時を追加する
             $now = new RentalTime();
-            $rental->returned = ($now->getTime() <= $rental->expected_return)
-                                         ? $now->getTime() : $rental->expected_return;
+            $rental->returned = $now->getTime();
             $rental->save();
             return redirect('/mypage');
 
