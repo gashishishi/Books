@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{__('Register')}}</div>
+                <div><a href="/login">お試し用アカウントもご用意しております。</a></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -68,6 +69,7 @@
                                 </button>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>

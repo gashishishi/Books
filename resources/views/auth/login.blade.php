@@ -1,6 +1,5 @@
 @extends('layouts.base-layout')
-<!-- メールアドレスもしくはユーザー名でログインできるようにしたい。 -->
-<!-- そのためにはユーザー名の一意化、ニックネームの設定が必要。あわせてjqueryのajaxで連携も -->
+
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -65,5 +64,8 @@
             </div>
         </div>
     </div>
+    <p>お試し用アカウント</p>
+    <p>メールアドレス : test@test.jp</p>
+    <p>パスワード : password</p>
 </div>
 @endsection
