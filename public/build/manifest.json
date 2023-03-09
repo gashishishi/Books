@@ -1,8 +1,28 @@
 {
+  "resources/css/style.css": {
+    "file": "assets/style-27079aec.css",
+    "isEntry": true,
+    "src": "resources/css/style.css"
+  },
   "resources/js/app.js": {
     "file": "assets/app-7057aced.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/list.js": {
+    "file": "assets/list-512734d1.js",
+    "isEntry": true,
+    "src": "resources/js/list.js"
+  },
+  "resources/js/nav-bar.js": {
+    "file": "assets/nav-bar-10c0ff1d.js",
+    "isEntry": true,
+    "src": "resources/js/nav-bar.js"
+  },
+  "resources/js/search-bar.js": {
+    "file": "assets/search-bar-6db0a6ab.js",
+    "isEntry": true,
+    "src": "resources/js/search-bar.js"
   },
   "resources/sass/app.scss": {
     "file": "assets/app-67dcdfd2.css",

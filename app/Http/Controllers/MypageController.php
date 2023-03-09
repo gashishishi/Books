@@ -40,6 +40,7 @@ class MypageController extends Controller
                 //          $rental->user->id(usersテーブルのid(user_id))
                 // になっている
 
+                
                 if(!empty($rental->returned)){
                     continue;
                 } else {
